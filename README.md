@@ -20,4 +20,4 @@ Alternatively install using
 pip install https://github.com/vlntnwbr/mendeley-watchdog-beta/releases/latest/download/mendeley-watchdog.tar.gz
 ```
 
-[pl-checks]: https://github.com/vlntnwbr/mendeley-watchdog-beta/workflows/checks/badge.svg
+[pl-checks]: https://github.com/vlntnwbr/mendeley-watchdog/workflows/checks/badge.svg
