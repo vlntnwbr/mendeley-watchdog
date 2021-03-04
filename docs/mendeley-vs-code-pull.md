@@ -41,6 +41,12 @@ subdirectory `my-latex-project` of the current working directory. The target
 directory must exist and the file must be writable. Otherwise the process will
 exit.
 
+**WARNING** Note that the source file has no file extension while the
+            destination file does. The software appends the `.bib` extension to
+            either of the provided filenames if a check determined that they
+            have different one (or none at all). This behavior my be changed in
+            future version so I recommend specifying the extension.
+
 If the environment variable `MENDELEY_BIBTEX_DIR` isn't set or its value
 doesn't point to a directory the application will also exit. This can be
 avoided by calling like this:
