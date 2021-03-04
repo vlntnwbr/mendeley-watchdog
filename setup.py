@@ -3,15 +3,25 @@
 import os
 import subprocess
 
+from types import FunctionType
 from typing import List, TextIO
 from setuptools import find_packages, setup
+
+from mendeley_watchdog.cli import mendeley
 
 HEREDIR = os.path.abspath(os.path.dirname(__file__))
 REQUIREMENTS_TXT = "requirements.txt"
 
 PROG = "mendeley-watchdog"
-DESC = "Distributes Mendeley bibtex files to specific directories upon change"
+DESC = "Distributes Mendeley bibtex file to specific destination upon change"
 VERSION = "0.0.0"
+
+
+def get_entrypoint(name: str, function: FunctionType) -> str:
+    """Get setuptools entrypoint with name for function"""
+    return "{}={}:{}".format(
+        name, function.__module__, function.__name__
+    )
 
 
 def open_local(filename: str, mode: str = "r") -> TextIO:
@@ -77,5 +87,5 @@ if __name__ == '__main__':
         packages=find_packages(),
         include_package_data=True,
         entry_points={"console_scripts": [
-            PROG + " = mendeley_watchdog.main:main"
+            get_entrypoint(mendeley.NAME, mendeley.main)
         ]})

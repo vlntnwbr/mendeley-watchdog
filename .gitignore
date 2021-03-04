@@ -1,10 +1,14 @@
 /.vscode/
 /.idea/
+/.test_files/
 **/dist/
 **/venv/
 **/.venv/
 **/__pycache__/
 **.egg-info/
+**.log
+
 
 requirements.txt
 **.pyc
+**.tar.gz
