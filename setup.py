@@ -77,7 +77,7 @@ if __name__ == '__main__':
     README = open_local("README.md").read()
     REQUIREMENTS = read_requirements()
     INSTALL_REQUIRES = REQUIREMENTS if REQUIREMENTS else None
-    setup(  # TODO add metadata (author etc.)
+    setup(
         name=PROG,
         description=DESC,
         version=VERSION,

@@ -5,9 +5,6 @@ import os
 import sys
 import time
 
-# TODO Docs in README
-# TODO Add LICENSE
-
 
 class Watchdog:  # pylint: disable=too-few-public-methods
     """Application object"""
