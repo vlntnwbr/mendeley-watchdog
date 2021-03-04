@@ -11,14 +11,4 @@
 #   official translations of the licence in another language of the EU.
 ##
 
-[[source]]
-name = "pypi"
-url = "https://pypi.org/simple"
-verify_ssl = true
-
-[packages]
-
-[dev-packages]
-flake8 = "*"
-pylint = "*"
-pylint-exit = "*"
+"""Entrypoints modules for mendeley-watchdog"""

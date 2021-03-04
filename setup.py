@@ -1,17 +1,41 @@
+##
+#   Copyright (c) 2021 Valentin Weber
+#
+#   This file is part of the software mendeley-watchdog.
+#
+#   The software is licensed under the European Union Public License
+#   (EUPL) version 1.2 or later. You should have received a copy of
+#   the english license text with the software. For your rights and
+#   obligations under this license refer to the file LICENSE or visit
+#   https://joinup.ec.europa.eu/community/eupl/og_page/eupl to view
+#   official translations of the licence in another language of the EU.
+##
+
 """Setup script"""
 
 import os
 import subprocess
 
+from types import FunctionType
 from typing import List, TextIO
 from setuptools import find_packages, setup
+
+from mendeley_watchdog.cli import mendeley
 
 HEREDIR = os.path.abspath(os.path.dirname(__file__))
 REQUIREMENTS_TXT = "requirements.txt"
 
 PROG = "mendeley-watchdog"
-DESC = "Distributes Mendeley bibtex files to specific directories upon change"
-VERSION = "0.0.0"
+DESC = "Distributes Mendeley bibtex file to specific destination upon change"
+VERSION = "0.0.1c01"
+GITHUB = "https://github.com/vlntnwbr/mendeley-watchdog"
+
+
+def get_entrypoint(name: str, function: FunctionType) -> str:
+    """Get setuptools entrypoint with name for function"""
+    return "{}={}:{}".format(
+        name, function.__module__, function.__name__
+    )
 
 
 def open_local(filename: str, mode: str = "r") -> TextIO:
@@ -31,7 +55,7 @@ def execute_command(args: List[str]) -> List[str]:
             check=True
         )
         return [line.strip() for line in process.stdout.splitlines()]
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, FileNotFoundError):
         return []
 
 
@@ -73,9 +97,32 @@ if __name__ == '__main__':
         description=DESC,
         version=VERSION,
         long_description=README,
+        long_description_content_type="text/markdown",
         install_requires=INSTALL_REQUIRES,
         packages=find_packages(),
         include_package_data=True,
+        url=GITHUB,
+        author="Valentin Weber",
+        author_email="dev@vweber.eu",
+        license="EUPL v1.2 or later",
+        project_urls={
+            "Bug Tracker": GITHUB + "/issues",
+            "Documentation": GITHUB + f"/tree/v{VERSION}/docs"
+        },
         entry_points={"console_scripts": [
-            PROG + " = mendeley_watchdog.main:main"
-        ]})
+            get_entrypoint(mendeley.NAME, mendeley.main)
+        ]},
+        classifiers=[
+            "Development Status :: 1 - Planning",
+            "Environment :: Console",
+            "Operating System :: OS Independent",
+            "Programming Language :: Python :: 3 :: Only",
+            "Intended Audience :: Education",
+            "Intended Audience :: Developers",
+            "Intended Audience :: Science/Research",
+            "Topic :: System :: Filesystems",
+            "Topic :: System :: Monitoring",
+            "Topic :: Utilities",
+            "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)"  # noqa pylint: disable=line-too-long
+        ]
+    )
