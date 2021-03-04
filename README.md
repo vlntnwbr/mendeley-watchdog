@@ -44,6 +44,7 @@ exemplary task could look like this:
     "type": "shell",
     "command": "mendeley-watchdog",
     "runOptions": {"runOn": "folderOpen"},
+    "problemMatcher": ["$eslint-compact"],
     "args": [
         "--mendeley-bibtex",
         "'R:\\Mendeley Library\\.bib'",

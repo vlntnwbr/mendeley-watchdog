@@ -73,6 +73,7 @@ mendeley-watchdog (assuming it's exposed on PATH) as soon as the workspace is op
     "type": "shell",
     "command": "mendeley-watchdog",
     "runOptions": {"runOn": "folderOpen"},
+    "problemMatcher": ["$eslint-stylish"],
     "args": [
         "--mendeley-bibtex",
         "'R:\\Mendeley Library\\.bib'",
@@ -98,6 +99,10 @@ that contain spaces need to be quoted just like on a regular command line, e.g.:
 
 Don't change `runOptions.runOn` unless the task should not run automatically as
 soon as the workspace is opened. It can always be started manually.
+
+The `problemMatcher` is needed to capture the error output of the running task.
+It does not need changing, but can be as long as the value refers to a valid
+existing problem matcher. For more info refer to the VS Code documentation.
 
 [toc-usage-examples]: #usage-examples
 [vscode-tasks]: https://code.visualstudio.com/docs/editor/tasks
