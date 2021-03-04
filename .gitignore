@@ -1,7 +1,8 @@
 /.vscode/
 /.idea/
 /.test_files/
-**/dist/
+/build/
+/dist/
 **/venv/
 **/.venv/
 **/__pycache__/

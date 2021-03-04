@@ -1,4 +1,4 @@
-graft docs/
+graft docs
 
 include Pipfile*
 include requirements.txt
