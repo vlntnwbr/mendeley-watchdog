@@ -16,6 +16,7 @@
 import argparse
 import logging
 import os
+import sys
 
 from ..main import Watchdog
 from ..core.utils import append_file_ext, isdir, setup_logging
@@ -63,8 +64,11 @@ class MendeleyWatchdog(argparse.ArgumentParser):
     def existing_dir_arg(value: str) -> str:
         """ArgumentTypeError if value doesn't point to directory"""
 
+        log = logging.getLogger("mendeley-bibtex-arg")
         checked_path = isdir(value)
         if not checked_path:
+            log.debug("directory not found: %s", value)
+            log.debug("path check returned: %r", checked_path)
             raise argparse.ArgumentTypeError(f"directory not found: '{value}'")
         return value
 
@@ -72,9 +76,13 @@ class MendeleyWatchdog(argparse.ArgumentParser):
     def writable_file_arg(value: str) -> str:
         """ArgumentTypeError if value doesn't point to writable file"""
 
+        log = logging.getLogger("writable-file-arg")
+        log_msg = "%s = %r"
         dirname, filename = os.path.split(value)
         checked_dir = isdir(dirname)
         if not checked_dir:
+            log.debug("directory not found: %s", value)
+            log.debug(log_msg, "checked_dir", checked_dir)
             raise argparse.ArgumentTypeError(f"directory not found: '{value}'")
 
         normed_path = os.path.join(checked_dir, filename)
@@ -83,6 +91,12 @@ class MendeleyWatchdog(argparse.ArgumentParser):
             with open(normed_path, "ab"):
                 pass
         except PermissionError as exc:
+            log.debug(err)
+            log.debug(
+                "%s = %r ; %s = %r",
+                "filename", filename,
+                "normed_path", normed_path
+            )
             raise argparse.ArgumentTypeError(err) from exc
         return normed_path
 
@@ -93,8 +107,13 @@ def main() -> None:
     setup_logging(f".{NAME}.log")
     log = logging.getLogger(NAME)
 
-    cmd = MendeleyWatchdog()
-    args = cmd.parse_args()
+    try:
+        cmd = MendeleyWatchdog()
+        args = cmd.parse_args()
+    except SystemExit:
+        print(f"{NAME}: error: argument parser failed, see log file for more")
+        sys.exit(2)
+
     file_to_watch, file_mirror = append_file_ext(
         args.bibfile, args.mirrored, f_ext=("bib", "bib")
     )
