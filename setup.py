@@ -14,8 +14,7 @@ REQUIREMENTS_TXT = "requirements.txt"
 
 PROG = "mendeley-watchdog"
 DESC = "Distributes Mendeley bibtex file to specific destination upon change"
-VERSION = "0.0.0"
-
+VERSION = "0.0.1c01"
 
 def get_entrypoint(name: str, function: FunctionType) -> str:
     """Get setuptools entrypoint with name for function"""
@@ -78,7 +77,7 @@ if __name__ == '__main__':
     README = open_local("README.md").read()
     REQUIREMENTS = read_requirements()
     INSTALL_REQUIRES = REQUIREMENTS if REQUIREMENTS else None
-    setup(
+    setup(  # TODO add metadata (author etc.)
         name=PROG,
         description=DESC,
         version=VERSION,

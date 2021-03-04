@@ -22,7 +22,7 @@ class MendeleyWatchdog(argparse.ArgumentParser):
 
         super().__init__(
             prog=NAME,
-            description="Watch *.bib file and copy it upon change",
+            description="watch *.bib file and mirror its contents after modification",
             epilog=epilog
         )
 
@@ -36,12 +36,12 @@ class MendeleyWatchdog(argparse.ArgumentParser):
         )
 
         self.add_argument(
-            "group",
-            help="name of mendeley group file to watch",
+            "bibfile",
+            help="name of mendeley bib file to watch",
         )
         self.add_argument(
-            "references",
-            help="path to file Mendeley group references will be mirrored to",
+            "mirrored",
+            help="path to file Mendeley bib file mirrored will be mirrored to",
             type=self.writable_file_arg
         )
 
@@ -82,7 +82,7 @@ def main() -> None:
     cmd = MendeleyWatchdog()
     args = cmd.parse_args()
     file_to_watch, file_mirror = append_file_ext(
-        args.group, args.references, f_ext=("bib", "bib")
+        args.bibfile, args.mirrored, f_ext=("bib", "bib")
     )
     log.info("watching '%s' in '%s'", file_to_watch, args.bibtex_dir)
     log.debug("file_mirror = '%s'", file_mirror)
