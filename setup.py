@@ -15,6 +15,8 @@ REQUIREMENTS_TXT = "requirements.txt"
 PROG = "mendeley-watchdog"
 DESC = "Distributes Mendeley bibtex file to specific destination upon change"
 VERSION = "0.0.1c01"
+GITHUB = "https://github.com/vlntnwbr/mendeley-watchdog"
+
 
 def get_entrypoint(name: str, function: FunctionType) -> str:
     """Get setuptools entrypoint with name for function"""
@@ -82,9 +84,30 @@ if __name__ == '__main__':
         description=DESC,
         version=VERSION,
         long_description=README,
+        long_description_content_type="text/markdown",
         install_requires=INSTALL_REQUIRES,
         packages=find_packages(),
         include_package_data=True,
+        url=GITHUB,
+        author="Valentin Weber",
+        author_email="dev@vweber.eu",
+        project_urls={
+            "Bug Tracker": GITHUB + "/issues",
+            "Documentation": GITHUB + "/tree/master/docs"
+        },
         entry_points={"console_scripts": [
             get_entrypoint(mendeley.NAME, mendeley.main)
-        ]})
+        ]},
+        classifiers=[
+            "Development Status :: 1 - Planning",
+            "Environment :: Console",
+            "Operating System :: OS Independent",
+            "Programming Language :: Python :: 3 :: Only",
+            "Intended Audience :: Education",
+            "Intended Audience :: Developers",
+            "Intended Audience :: Science/Research",
+            "Topic :: System :: Filesystems",
+            "Topic :: System :: Monitoring",
+            "Topic :: Utilities"
+        ]
+    )
