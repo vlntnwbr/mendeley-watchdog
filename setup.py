@@ -1,3 +1,16 @@
+##
+#   Copyright (c) 2021 Valentin Weber
+#
+#   This file is part of the software mendeley-watchdog.
+#
+#   The software is licensed under the European Union Public License
+#   (EUPL) version 1.2 or later. You should have received a copy of
+#   the english license text with the software. For your rights and
+#   obligations under this license refer to the file LICENSE or visit
+#   https://joinup.ec.europa.eu/community/eupl/og_page/eupl to view
+#   official translations of the licence in another language of the EU.
+##
+
 """Setup script"""
 
 import os
@@ -91,6 +104,7 @@ if __name__ == '__main__':
         url=GITHUB,
         author="Valentin Weber",
         author_email="dev@vweber.eu",
+        license="EUPL v1.2 or later",
         project_urls={
             "Bug Tracker": GITHUB + "/issues",
             "Documentation": GITHUB + "/tree/master/docs"
@@ -108,6 +122,7 @@ if __name__ == '__main__':
             "Intended Audience :: Science/Research",
             "Topic :: System :: Filesystems",
             "Topic :: System :: Monitoring",
-            "Topic :: Utilities"
+            "Topic :: Utilities",
+            "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)"  # noqa pylint: disable=line-too-long
         ]
     )
