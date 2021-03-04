@@ -40,7 +40,7 @@ def execute_command(args: List[str]) -> List[str]:
             check=True
         )
         return [line.strip() for line in process.stdout.splitlines()]
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, FileNotFoundError):
         return []
 
 
