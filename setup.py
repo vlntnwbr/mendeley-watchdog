@@ -107,7 +107,7 @@ if __name__ == '__main__':
         license="EUPL v1.2 or later",
         project_urls={
             "Bug Tracker": GITHUB + "/issues",
-            "Documentation": GITHUB + "/tree/master/docs"
+            "Documentation": GITHUB + f"/tree/v{VERSION}/docs"
         },
         entry_points={"console_scripts": [
             get_entrypoint(mendeley.NAME, mendeley.main)
