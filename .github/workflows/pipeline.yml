@@ -6,6 +6,7 @@ on:
       - v*
     branches:
       - master
+      - vs-code-task
 
 jobs:
   build:
@@ -26,11 +27,11 @@ jobs:
         pipenv install -d
         echo "::set-output name=package::mendeley_watchdog"
     - name: Flake8
-      if: ${{ github.ref == 'refs/heads/master' }}
+      if: ${{ startsWith( github.ref, 'refs/heads/' ) }}
       id: flake8
       run : pipenv run flake8 --doctests --max-doc-length 72 ${{ steps.prep.outputs.package }}
     - name: Pylint
-      if: ${{ github.ref == 'refs/heads/master' }}
+      if: ${{ startsWith( github.ref, 'refs/heads/' ) }}
       id: pylint
       run: pipenv run pylint -f colorized ${{ steps.prep.outputs.package }} || pipenv run pylint-exit -efail -wfail $?
     - name: Build  # on windows: replace var assignment and dist path 
