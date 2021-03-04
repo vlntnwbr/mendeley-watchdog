@@ -8,6 +8,7 @@ from ..main import Watchdog
 from ..core.utils import append_file_ext, isdir, setup_logging
 
 NAME = "mendeley-watchdog"
+DESC = "watch BibTeX file and mirror its contents after modification"
 
 
 class MendeleyWatchdog(argparse.ArgumentParser):
@@ -22,7 +23,7 @@ class MendeleyWatchdog(argparse.ArgumentParser):
 
         super().__init__(
             prog=NAME,
-            description="watch *.bib file and mirror its contents after modification",
+            description=DESC,
             epilog=epilog
         )
 
