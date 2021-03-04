@@ -87,7 +87,7 @@ Ideas include:
 Feel free to [open an issue][new-issue] if you encountered bugs or have other
 ideas that aren't yet listed in the [backlog][bug-enhancement-backlog].
 
-[toc-docs]: #documentation
+[toc-doc]: #documentation
 
 [mendeley-desktop]: https://www.mendeley.com/reference-management/mendeley-desktop
 [new-issue]: https://github.com/vlntnwbr/mendeley-watchdog/issues/new

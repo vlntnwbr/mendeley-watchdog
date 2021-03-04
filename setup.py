@@ -27,7 +27,7 @@ REQUIREMENTS_TXT = "requirements.txt"
 
 PROG = "mendeley-watchdog"
 DESC = "Distributes Mendeley bibtex file to specific destination upon change"
-VERSION = "0.0.1c01"
+VERSION = "0.0.1"
 GITHUB = "https://github.com/vlntnwbr/mendeley-watchdog"
 
 
