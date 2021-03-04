@@ -22,3 +22,6 @@ verify_ssl = true
 flake8 = "*"
 pylint = "*"
 pylint-exit = "*"
+
+[requires]
+python-version = "3.9"

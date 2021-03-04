@@ -26,8 +26,8 @@ HEREDIR = os.path.abspath(os.path.dirname(__file__))
 REQUIREMENTS_TXT = "requirements.txt"
 
 PROG = "mendeley-watchdog"
-DESC = "Distributes Mendeley bibtex file to specific destination upon change"
-VERSION = "0.0.1"
+DESC = "Continuously monitor a file and mirror the content after modification"
+VERSION = "0.0.2"
 GITHUB = "https://github.com/vlntnwbr/mendeley-watchdog"
 
 
@@ -99,6 +99,7 @@ if __name__ == '__main__':
         long_description=README,
         long_description_content_type="text/markdown",
         install_requires=INSTALL_REQUIRES,
+        python_requires=">=3.8",
         packages=find_packages(),
         include_package_data=True,
         url=GITHUB,
@@ -106,7 +107,7 @@ if __name__ == '__main__':
         author_email="dev@vweber.eu",
         license="EUPL v1.2 or later",
         project_urls={
-            "Bug Tracker": GITHUB + "/issues",
+            "Bug Tracker": GITHUB + "/issues?q=label%3bug",
             "Documentation": GITHUB + f"/tree/v{VERSION}/docs"
         },
         entry_points={"console_scripts": [

@@ -10,7 +10,7 @@
     official translations of the licence in another language of the EU.
 --->
 
-# Mendeley Watchdog ![pipeline-checks][pl-checks]
+# Mendeley Watchdog ![pipeline-checks][badge-checks]
 
 Mendeley Watchdog is a command line utility that continuously watches the last
 modification time of a given files and writes the content to a specified file.
@@ -36,7 +36,7 @@ making it possible to mirror one of these files to any writable destination.
 Since I write LaTeX using Visual Studio Code I wanted to be able to run the
 monitoring process whenever the workspace folder for a project is open. Luckily
 VS Code makes it possible to configure arbitrary tasks for a given workspace.
-The `mendeley-watchdog` entry point was designed with this use-case in mind, an
+The **mendeley-watchdog** entry point was designed with this use-case in mind, an
 exemplary task could look like this:
 ```
 {
@@ -52,16 +52,16 @@ exemplary task could look like this:
     ]
 }
 ```
-The above task launches `mendeley-watchdog` as soon as the containing workspace
-folder is opened. The task continuously mirrors the file
-`R:\Mendeley Library\.bib\hhn-it-systems.bib` as `references.bib` to the
-workspace subdirectory `resources`. Refer to the [documentation][toc-doc] for a
-more detailed explanation of the `mendeley-watchdog` entry point and the task.
+The above task launches **mendeley-watchdog** as soon as the containing
+workspace folder is opened. The task continuously mirrors the file
+*R:\Mendeley Library\.bib\hhn-it-systems.bib* as *references.bib* to the
+workspace subdirectory *resources*. Refer to the [documentation][toc-doc] for a
+more detailed explanation of the entry point and task.
 
 ## Installation
-Installing using `pipx` isolates packages in their own environment and exposes
-their entry points on PATH. This is the recommended way of installation. The
-above-mentioned VS Code task assumes the entry point is on PATH.
+The above-mentioned VS Code task assumes the entry point is on PATH. An easy
+way to achieve this is installing via **[pipx][pipx]** which isolates the
+package in its own virtual environment exposes their entry points on PATH.
 ```
 pipx install mendeley-watchdog
 ```
@@ -85,12 +85,14 @@ Ideas include:
 - enable mirroring a map of files and destinations
 
 Feel free to [open an issue][new-issue] if you encountered bugs or have other
-ideas that aren't yet listed in the [backlog][bug-enhancement-backlog].
+ideas that aren't yet listed in the [backlog][issues].
 
+
+[badge-checks]: https://github.com/vlntnwbr/mendeley-watchdog/workflows/checks/badge.svg
 [toc-doc]: #documentation
 
 [mendeley-desktop]: https://www.mendeley.com/reference-management/mendeley-desktop
-[new-issue]: https://github.com/vlntnwbr/mendeley-watchdog/issues/new
-[bug-enhancement-backlog]: https://github.com/vlntnwbr/mendeley-watchdog/issues?q=label%3Abug+label%3Aenhancement
+[pipx]: https://pypi.org/project/pipx/
 [master-docs]: https://github.com/vlntnwbr/mendeley-watchdog/tree/master/docs
-[pl-checks]: https://github.com/vlntnwbr/mendeley-watchdog/workflows/checks/badge.svg
+[new-issue]: https://github.com/vlntnwbr/mendeley-watchdog/issues/new/choose
+[issues]: https://github.com/vlntnwbr/mendeley-watchdog/issues
